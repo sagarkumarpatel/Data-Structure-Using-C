@@ -3,13 +3,13 @@
 
 struct Queue{
     int size;
-    int font;
+    int front;
     int rear;
     int * arr;
 };
 struct Queue* createQueue(int size){
     struct Queue* q=(struct Queue*)malloc(sizeof(struct Queue));
-    q->font=q->rear=-1;
+    q->front=q->rear=-1;
     q->arr=(int*)malloc(size*sizeof(int));
     return q;
 }
@@ -24,7 +24,7 @@ int isFull(struct Queue *q){
 }
 
 int isEmpty(struct Queue *q){
-    if(q->font==-1){
+    if(q->front==-1){
         return 1;
     }
     else{
@@ -39,7 +39,7 @@ void enqueue(struct Queue* q, int data){
     }
     else{
         if(q->rear==-1){
-            q->font=0;
+            q->front=0;
             q->rear=0;
             q->arr[q->rear]=data;
         }
@@ -50,6 +50,37 @@ void enqueue(struct Queue* q, int data){
     }
 }
 
+int dequeue(struct Queue* q){
+    if(isEmpty(q)){
+        printf("Queue is empty\n");
+        return -99999;
+    }
+    else{
+        int value=q->arr[q->front];
+        if(q->front==q->rear){
+            q->front=q->rear=-1;
+        }
+        else{
+            q->front++;
+        }
+        return value;
+    }
+}
+
+int getRear(struct Queue* q){
+    if(isEmpty(q)){
+        printf("Queue is Empty\n");
+    }
+    return q->arr[q->rear];
+}
+
+int getFront(struct Queue* q){
+    if(isEmpty(q)){
+        printf("Queue is Empty\n");
+        return -99999;
+    }
+    return q->arr[q->front];
+}
 
 
 int main(){
