@@ -89,7 +89,6 @@ void display(struct Queue* q){
       printf("Queue is Empty\n");
       return;
     }
-    printf("\nThe data of the Queue: ");
     for(int i=q->front;i<=q->rear;i++){
         printf("%d ",q->arr[i]);
     }
@@ -114,6 +113,7 @@ do{
     scanf("%d",&choice);
     switch(choice){
         case 1:
+        printf("\nThe data of the Queue: ");
         display(q);
         printf("\n==================================\n");
         break;
@@ -139,31 +139,36 @@ do{
         printf("Enter your Data: ");
         scanf("%d",&data);
         enqueue(q,data);
+        printf("\nThe data of the Queue after enQueue: ");
         display(q);
-        printf("\n===================================\n");
+        printf("\n=========================================\n");
         break;
         case 5:
-        dequeue(q);
+        data=dequeue(q);
+        if(data!=-99999){
+            printf("The deQueue data is: %d",data);
+        }
+        printf("\nThe data of the Queue after deQueue: ");
         display(q);
-        printf("\n===================================\n");
+        printf("\n=========================================\n");
         break;
         case 6:
         data=getRear(q);
         if(data!=-99999){
         printf("The Rare of the Queue is: %d ",data);
         }
-        printf("\n===================================\n");
+        printf("\n=======================================\n");
         break;
         case 7:
         data=getFront(q);
         if(data!=-99){
         printf("The Front of the Queue is: %d",data);
         }
-        printf("\n===================================\n");
+        printf("\n======================================\n");
         break;
         case 8:
         printf("You are Out of the Program\n");
-        printf("\n===================================\n");
+        printf("\n=======================================\n");
         break;
         default:
         printf("Invalid Choice!\n");
