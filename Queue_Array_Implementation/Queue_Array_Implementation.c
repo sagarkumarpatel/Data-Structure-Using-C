@@ -9,6 +9,7 @@ struct Queue{
 };
 struct Queue* createQueue(int size){
     struct Queue* q=(struct Queue*)malloc(sizeof(struct Queue));
+    q->size=size;
     q->front=q->rear=-1;
     q->arr=(int*)malloc(size*sizeof(int));
     return q;
@@ -70,6 +71,7 @@ int dequeue(struct Queue* q){
 int getRear(struct Queue* q){
     if(isEmpty(q)){
         printf("Queue is Empty\n");
+        return -99999;
     }
     return q->arr[q->rear];
 }
@@ -77,12 +79,95 @@ int getRear(struct Queue* q){
 int getFront(struct Queue* q){
     if(isEmpty(q)){
         printf("Queue is Empty\n");
-        return -99999;
+        return -99999; 
     }
     return q->arr[q->front];
 }
 
+void display(struct Queue* q){
+    if(isEmpty(q)){
+      printf("Queue is Empty\n");
+      return;
+    }
+    printf("\nThe data of the Queue: ");
+    for(int i=q->front;i<=q->rear;i++){
+        printf("%d ",q->arr[i]);
+    }
+}
 
 int main(){
-
+struct Queue* q=NULL;
+int size,choice,data;
+printf("Enter the size of the Queue: ");
+scanf("%d",&size);
+q=createQueue(size);
+do{
+    printf("\n1)Display\n");
+    printf("2)isEmpty\n");
+    printf("3)isFull\n");
+    printf("4)enQueue\n");
+    printf("5)deQueue\n");
+    printf("6)getRear\n");
+    printf("7)getFront\n");
+    printf("----8)Exit from the program----\n");
+    printf("Enter your choice: ");
+    scanf("%d",&choice);
+    switch(choice){
+        case 1:
+        display(q);
+        printf("\n==================================\n");
+        break;
+        case 2:
+         if(isEmpty(q)==1){
+            printf("Queue is Empty\n");
+         }else{
+            printf("Queue is not Empty\n");
+         }
+      
+        printf("\n===================================\n");
+        break;
+        case 3:
+        if(isFull(q)==1){
+            printf("Queue is Full\n");
+        }
+        else{
+            printf("Queue is not Full\n");
+        }
+        printf("\n===================================\n");
+        break;
+        case 4:
+        printf("Enter your Data: ");
+        scanf("%d",&data);
+        enqueue(q,data);
+        display(q);
+        printf("\n===================================\n");
+        break;
+        case 5:
+        dequeue(q);
+        display(q);
+        printf("\n===================================\n");
+        break;
+        case 6:
+        data=getRear(q);
+        if(data!=-99999){
+        printf("The Rare of the Queue is: %d ",data);
+        }
+        printf("\n===================================\n");
+        break;
+        case 7:
+        data=getFront(q);
+        if(data!=-99){
+        printf("The Front of the Queue is: %d",data);
+        }
+        printf("\n===================================\n");
+        break;
+        case 8:
+        printf("You are Out of the Program\n");
+        printf("\n===================================\n");
+        break;
+        default:
+        printf("Invalid Choice!\n");
+    }
+}while(choice>=1 &&choice<=8);
+return 0;
 }
