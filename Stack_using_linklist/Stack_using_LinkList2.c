@@ -103,12 +103,12 @@ int main(){
                 printf("\n==========================================\n");
                 break;
             case 2:
-                printf("The elements in stack :");
+                printf("The Elements in stack :");
                 display(s);
                 pop(s);
                 printf("The elements in stack :");
                 display(s);
-                printf("\n==========================================\n");
+                printf("\n============================================\n");
                 break;
             case 3:{
                 struct node * n = peek(s);
