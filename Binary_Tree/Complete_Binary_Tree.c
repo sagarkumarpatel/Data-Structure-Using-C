@@ -6,11 +6,12 @@ int main(){
     scanf("%d",&size);
     int* arr=(int*)malloc((size+1)*sizeof(int));
     arr[0]=0;
+    printf("enter the data: \n");
     for(int i=1;i<=size;i++){
         scanf("%d",&arr[i]);
     }
     do{
-printf("1) Left child\n");
+printf("\n1) Left child\n");
 printf("2) Right child\n");
 printf("3) Left & right child\n");
 printf("5) Exit\n");
@@ -22,6 +23,7 @@ switch(choice){
     scanf("%d",&index);
     printf("\nLeft child index: %d: ",index*2);
     printf("\nLeft child value: %d: ",arr[index*2]);
+    printf("\n=================================================\n");
     break;
 
     case 2:
@@ -29,6 +31,7 @@ switch(choice){
     scanf("%d",&index);
     printf("\nRight child index: %d",(index*2)+1);
     printf("\nRight child value: %d",arr[(index*2)+1]);
+    printf("\n=================================================\n");
     break;
 
     case 3:
@@ -38,12 +41,14 @@ switch(choice){
     printf("\nLeft child value: %d: ",arr[index*2]);
     printf("\nRight child index: %d",(index*2)+1);
     printf("\nRight child value: %d",arr[(index*2)+1]);
+    printf("\n=================================================\n");
     break;
     case 4:
     printf("Enter the Child index: ");
     scanf("%d",&index);
     printf("\nParent index: %d",index/2);
     printf("\nParent value: %d",arr[index/2]);
+    printf("\n=================================================\n");
     break;
     case 5:
     printf("\n--------------------Exit------------\n");
