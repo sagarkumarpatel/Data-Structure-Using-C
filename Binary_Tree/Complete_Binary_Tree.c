@@ -6,8 +6,8 @@ int main(){
     scanf("%d",&size);
     int* arr=(int*)malloc((size+1)*sizeof(int));
     arr[0]=0;
-    printf("enter the data: \n");
     for(int i=1;i<=size;i++){
+        printf("Enter Value at index %d: ",i);
         scanf("%d",&arr[i]);
     }
     do{
