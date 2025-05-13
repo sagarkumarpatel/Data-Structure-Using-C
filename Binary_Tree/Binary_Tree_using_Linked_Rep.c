@@ -103,7 +103,7 @@ int getMax(struct Node *Root)
     }
     else
     {
-        return getMin(Root->Right);
+        return getMax(Root->Right);
     }
 }
 
